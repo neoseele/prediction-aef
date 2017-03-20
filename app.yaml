@@ -27,8 +27,8 @@ resources:
   memory_gb: 2
 
 automatic_scaling:
-  min_num_instances: 5
-  max_num_instances: 20
+  min_num_instances: 3
+  max_num_instances: 10
   cool_down_period_sec: 120 # default value
   cpu_utilization:
-    target_utilization: 0.6
+    target_utilization: 0.8
