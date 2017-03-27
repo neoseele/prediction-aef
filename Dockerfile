@@ -8,7 +8,7 @@ RUN apt-get update --fix-missing
 RUN apt-get install -yq --no-install-recommends \
     supervisor virtualenv \
     python python-virtualenv python-pip \
-    libffi-dev libssl-dev libglib2.0-0
+    libglib2.0-0
 
 # Create user and group
 RUN groupadd -r $GROUP && useradd -r -g $GROUP $USER
