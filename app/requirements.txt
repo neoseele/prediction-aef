@@ -17,5 +17,5 @@ MarkupSafe==0.23
 olefile==0.44
 Pillow==4.0.0
 gunicorn==19.6.0
-google-cloud==0.23.0
+#google-cloud==0.23.0
 opencv-python==3.2.0.6

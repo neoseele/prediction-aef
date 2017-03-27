@@ -1,5 +1,5 @@
-NAMESPACE=prediction
-APP=flask
+NAMESPACE=nmiu-play
+APP=predict
 
 build:
 	docker build -t ${NAMESPACE}/${APP} .
