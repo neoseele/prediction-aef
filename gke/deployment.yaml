@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: predict-deployment
+spec:
+  replicas: 3
+  template:
+      metadata:
+        labels:
+          app: predict
+          version: 1.0.0
+      spec:
+        containers:
+          - name: predict
+            image: gcr.io/nmiu-play/predict:1.0.0
+            ports:
+              - containerPort: 8080
