@@ -8,7 +8,7 @@ def predict(image):
     model_path = current_app.config['MODEL_PATH']
 
     model = load_model(model_path)
-    current_app.logger.info(utils.debug('A'))
+    #current_app.logger.info(utils.debug('A'))
 
     # useful when testing with full size image
     if image.shape != (image_size, image_size, 3):
@@ -19,8 +19,7 @@ def predict(image):
     image /= 255
 
     result = model.predict_proba(image) # numpy.ndarray
-    print(result)
-    current_app.logger.info(utils.debug('b'))
+    #current_app.logger.info(utils.debug('b'))
 
     # predictions = result[0].tolist()
     # if predictions[0] > 0.8:
@@ -29,6 +28,6 @@ def predict(image):
     #     return 1 # non boss
 
     result = model.predict_classes(image)
-    current_app.logger.info(utils.debug('c'))
+    #current_app.logger.info(utils.debug('c'))
 
     return result[0]
