@@ -29,7 +29,8 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
 
     @app.route('/', methods=['GET'])
     def root():
-        return 'Hello!', 200
+        version = app.config['VERSION']
+        return 'Hello (v:%s)' % version, 200
 
     @app.route('/predict', methods=['POST'])
     def predict():
