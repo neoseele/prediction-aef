@@ -8,10 +8,10 @@ spec:
       metadata:
         labels:
           app: predict
-          version: 1.0.0
+          version: 1.0.1
       spec:
         containers:
           - name: predict
-            image: gcr.io/nmiu-play/predict:1.0.0
+            image: gcr.io/nmiu-play/predict:1.0.1
             ports:
               - containerPort: 8080
