@@ -3,15 +3,26 @@ kind: Deployment
 metadata:
   name: predict-deployment
 spec:
-  replicas: 3
+  replicas: 4
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25% # default
+      maxUnavailable: 25% # default
   template:
-      metadata:
-        labels:
-          app: predict
-          version: 1.0.1
-      spec:
-        containers:
-          - name: predict
-            image: gcr.io/nmiu-play/predict:1.0.1
-            ports:
-              - containerPort: 8080
+    metadata:
+      labels:
+        app: predict
+        version: 1.0.1
+    spec:
+      containers:
+        - name: predict
+          image: gcr.io/nmiu-play/predict:1.0.1
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /_ah/health
+              port: 8080
+            initialDelaySeconds: 3
+            periodSeconds: 3
