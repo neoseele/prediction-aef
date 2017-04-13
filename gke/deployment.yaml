@@ -2,6 +2,8 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: predict-deployment
+  labels:
+      deployment: predict
 spec:
   replicas: 4
   strategy:
@@ -20,9 +22,21 @@ spec:
           image: gcr.io/nmiu-play/predict:1.0.1
           ports:
             - containerPort: 8080
+              name: predict-local
+              protocol: TCP
           livenessProbe:
             httpGet:
               path: /_ah/health
               port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 30
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 5
+          readinessProbe:
+            httpGet:
+              path: /_ah/health
+              port: 8080
+              scheme: HTTP
             initialDelaySeconds: 3
-            periodSeconds: 3
+            timeoutSeconds: 5
