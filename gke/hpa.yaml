@@ -6,7 +6,7 @@ metadata:
   namespace: default
 spec:
   maxReplicas: 10
-  minReplicas: 4
+  minReplicas: 3
   scaleTargetRef:
     apiVersion: extensions/v1beta1
     kind: Deployment
@@ -16,7 +16,7 @@ spec:
   - type: Resource
     resource:
       name: cpu
-      targetAverageUtilization: 50
+      targetAverageUtilization: 30
   # - type: Pods
   #   pods:
   #     metricName: packets-per-second
