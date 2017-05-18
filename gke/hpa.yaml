@@ -1,5 +1,5 @@
 # seems to work only on the cluster with enable-kubernetes-alpha selected
-apiVersion: autoscaling/v2alpha1
+apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: predict-deployment
@@ -11,12 +11,12 @@ spec:
     apiVersion: extensions/v1beta1
     kind: Deployment
     name: predict-deployment
-  # targetCPUUtilizationPercentage: 80 # v1 stuff
-  metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      targetAverageUtilization: 30
+  targetCPUUtilizationPercentage: 80 # v1 stuff
+  # metrics:
+  # - type: Resource
+  #   resource:
+  #     name: cpu
+  #     targetAverageUtilization: 30
   # - type: Pods
   #   pods:
   #     metricName: packets-per-second
