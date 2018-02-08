@@ -22,11 +22,11 @@ spec:
           image: gcr.io/nmiu-play/predict:1.0.1
           resources:
             requests:
-              memory: "1024M"
-              cpu: "500m"
+              memory: 1024M
+              cpu: 500m # == 0.5
             limits:
-              memory: "1536M"
-              cpu: "900m"
+              memory: 1536M
+              cpu: 1
           ports:
             - containerPort: 8080
               name: predict-local
